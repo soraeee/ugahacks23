@@ -67,7 +67,6 @@
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
-		width: 450px;
 	}
 	.upload {
 		width: 50px;
@@ -86,6 +85,7 @@
 
 	#app {
 		background-color: #0d1621;
+		width:30%;
 	}
 </style>
   

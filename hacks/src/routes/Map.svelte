@@ -79,9 +79,8 @@
 </script>
 <style>
     .full-screen {
-        width: 70vw;
+        width: 70%;
         height: 100vh;
-
     }
 </style>
 

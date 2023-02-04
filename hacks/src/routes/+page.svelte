@@ -1,4 +1,4 @@
-  <head>
+<head>
     <title>PictoMap</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,7 +78,6 @@
 	}
 
 	body {
-		color: white;
 		background-image: url('images/layered-waves.svg');
 		background-position: center;
 		background-repeat: no-repeat;
@@ -88,12 +87,16 @@
 	}
 
 	section {
+		background-image: url('images/layered-waves.svg');
+		background-size: cover;
 		position: relative;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		min-height: 20px;
-		padding: 5px 10vw;
+		min-height: 160px;
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 35px;
 	}
 
 

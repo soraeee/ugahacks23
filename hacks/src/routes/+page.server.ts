@@ -2,7 +2,7 @@ import collection from "$lib/collection"
 import type { Pin } from "$lib/pin";
 export async function load() {
   const pinboard = await collection.find().toArray()
-  console.log(pinboard)
+  // console.log(pinboard)
   // pinboard[0]._id = pinboard[0]._id.valueOf()
   const pinboard2: Array<Pin> = [];
   for (let i = 0; i < pinboard.length; i++) {

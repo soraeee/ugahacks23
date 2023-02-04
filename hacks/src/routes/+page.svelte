@@ -42,17 +42,6 @@
     console.log("Exported pinboard")
 </script>
 
-{#each data.data.pinboard2 as pin}
-    <li>
-      <h3>{pin.Name}</h3>
-      <p>{pin.Lat}</p>
-      <p>{pin.Lon}</p>
-	  <img src="{pin.ImgFile}" alt="avatar" width="200px" height="200px"/>
-      <p>{pin.Caption}</p>
-	  <p>{pin.dateadded}</p>
-    </li>
-{/each}
-
 
 
 <svelte:head>
@@ -62,28 +51,27 @@
 </svelte:head>
 
 <style>
-:global(body) {
-	padding: 2.5%;
-}
-.main {
-	display: flex;
-	flex-direction: row;
-}
-.sv {
-	position: responsive;
-	text-align: center;
-}
-h1 {
-    text-align: center;
-    font-family: 'Bebas Neue', cursive;
-    font-size: 30px;
-    display: inline-block;
-    transform: scale(2, 1.5);
-}
-
+	:global(body) {
+		padding: 2.5%;
+	}
+	.main {
+		display: flex;
+		flex-direction: row;
+	}
+	.sv {
+		position: responsive;
+		text-align: center;
+	}
+	h1 {
+		text-align: center;
+		font-family: 'Bebas Neue', cursive;
+		font-size: 30px;
+		display: inline-block;
+		transform: scale(2, 1.5);
+	}
 	body {
 		color: white;
-		background-image: url("layered-waves.svg");
+		background-image: url('images/redwave.png');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -98,7 +86,6 @@ h1 {
 		align-items: center;
 		min-height: 20px;
 		padding: 5px 10vw;
-
 	}
 
 

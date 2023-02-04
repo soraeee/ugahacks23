@@ -48,7 +48,7 @@
       <h3>{pin.Name}</h3>
       <p>{pin.Lat}</p>
       <p>{pin.Lon}</p>
-      <p>{pin.ImgFile}</p>
+      <!--<p>{pin.ImgFile}</p>-->
 	  <img src="{pin.ImgFile}" alt="avatar" width="200px" height="200px"/>
       <p>{pin.Caption}</p>
 	  <p>{pin.dateadded}</p>

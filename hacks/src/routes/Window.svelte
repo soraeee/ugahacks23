@@ -36,12 +36,6 @@
 		{/if}
 		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-		<hr width="100%">
-
-		<grid class="dbimages">
-			<h2>Current Saved Images</h2><br>
-			<img src="{avatar}" alt="avatar" width="70px" height="70px"/>
-		</grid>
 	</grid>
 </div>
 <style>

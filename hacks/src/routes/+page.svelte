@@ -49,10 +49,12 @@
       <p>{pin.Lat}</p>
       <p>{pin.Lon}</p>
       <p>{pin.ImgFile}</p>
+	  <img src="{pin.ImgFile}" alt="avatar" width="200px" height="200px"/>
       <p>{pin.Caption}</p>
 	  <p>{pin.dateadded}</p>
     </li>
 {/each}
+
 
 
 <svelte:head>

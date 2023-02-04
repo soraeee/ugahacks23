@@ -10,14 +10,19 @@
 				reader.onload = e => {
 					avatar = e.target.result
 				};
+				
 }
 	
 </script>
 <div id="app">
 	<h1>Upload Image</h1>
-		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} />
-        <div class="chan" on:click={()=>{fileinput.click();}}>Choose Image</div>
+	<grid>
+		{#if avatar}
+			<img src="{avatar}" alt="avatar" width="70px" height="70px"/>
+		{/if}
+		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="80px"/>
         <input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
+	</grid>
 </div>
 <style>
 	h2 {

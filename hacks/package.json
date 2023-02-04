@@ -26,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"google-maps": "^4.3.3",
 		"svelte-google-maps": "^0.2.0"
 	}
 }

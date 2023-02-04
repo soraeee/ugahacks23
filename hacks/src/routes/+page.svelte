@@ -4,16 +4,32 @@
 
 <script lang="ts">
 	import Map from './Map.svelte';
-	import Modal, { bind } from 'svelte-simple-modal';
 	import Window from './Window.svelte'
 	import { info } from "./stores.js"
+	import type { PageData } from './$types';
 
 	let content: any;
 
 	info.subscribe(con => {
 		content = con;
 	})
+
+
+    export let data: PageData
+    console.log("Exported pinboard")
 </script>
+
+{#each data.data.pinboard2 as pin}
+    <li>
+      <h3>{pin.Name}</h3>
+      <p>{pin.Lat}</p>
+      <p>{pin.Lon}</p>
+      <p>{pin.ImgFile}</p>
+      <p>{pin.Caption}</p>
+	  <p>{pin.dateadded}</p>
+    </li>
+{/each}
+
 
 <svelte:head>
 	<script defer async

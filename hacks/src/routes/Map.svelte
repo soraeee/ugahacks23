@@ -6,6 +6,8 @@
 	let map: any;
 	let zoom = 8;
     let center = {lat: 0, lng: 0};
+
+	var markerList: any[] = [];
     
     import { onMount } from 'svelte';
     
@@ -16,6 +18,11 @@
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
 			placeMarker(event.latLng);
+			markerList.push({
+				"lat": event.latLng.lat(),
+				"lng": event.latLng.lng(),
+			})
+			console.log(markerList)
 		});
 	});
 

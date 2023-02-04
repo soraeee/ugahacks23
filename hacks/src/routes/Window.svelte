@@ -41,17 +41,25 @@
 		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</grid>
+	<grid class="viewside">
+		<h2>{message}</h2>
+		<br>
+		<h1>Saved Image</h1><br>
+		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
+	</grid>
 </div>
 <style>
 	h2 {
 		font-size: 2rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	h1 {
 		font-size: 1rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	grid {
 		align-items: center;
@@ -71,6 +79,7 @@
 		text-align: center;
 		margin-top: 10px;
 		padding: 5px 15px 5px 15px;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	.submit-button:hover {
 		cursor: pointer;

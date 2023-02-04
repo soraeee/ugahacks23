@@ -6,7 +6,7 @@
 	 */
 	let container: any;
 	let map: any;
-	let zoom = 8;
+	let zoom = 2;
     let center = {lat: 0, lng: 0};
 
 	export let markerList: any[] = [];
@@ -81,6 +81,7 @@
     .full-screen {
         width: 70vw;
         height: 100vh;
+
     }
 </style>
 

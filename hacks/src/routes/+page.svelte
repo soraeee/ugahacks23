@@ -4,18 +4,17 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="aesthetic.css" />
     <script type="module" src="./index.js"></script>
 	<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
   </head>
-  <body data-sveltekit-preload-data="hover">
+  <body data-sveltekit-preload-data="hover" class = "dingus">
 	<div style="display: contents"></div>
 
 	<section>
 	<div class="layer1"></div>
-    <h1>PictoMap</h1>
+    <div class = "title">PictoMap</div>
     
 	<!--<a href="#" class="button">UPLOAD</a>-->
 	</section>
@@ -60,6 +59,15 @@
 		position: responsive;
 		text-align: center;
 	}
+	.title {
+		text-align: center;
+		font-family: 'Bebas Neue', cursive;
+		font-size: 2em;
+		font-weight: 600;
+		display: inline-block;
+		transform: scale(1.75, 1.5);
+		font-family: 'IBM Plex Sans', sans-serif;
+	}
 	h1 {
 		text-align: center;
 		font-family: 'Bebas Neue', cursive;
@@ -67,14 +75,14 @@
 		display: inline-block;
 		transform: scale(1.75, 1.5);
 		font-family: 'IBM Plex Sans', sans-serif;
-}
+	}
+
 	body {
 		color: white;
-		background-image: url('images/redwave.png');
+		background-image: url('images/layered-waves.svg');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: cover;
-		background-color: #202731;
 		padding-top: 0px;
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
@@ -105,6 +113,10 @@
 		font-size: 16px;
 		border-radius: 12px;
 		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),  0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+	
+	.dingus {
+		all: unset;
 	}
 </style>
 <div class="main">

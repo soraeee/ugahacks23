@@ -21,7 +21,6 @@
 	</section>
 	<div id="map"></div>
   </body>
-<h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <p>dingus</p>
 
@@ -48,7 +47,6 @@
       <h3>{pin.Name}</h3>
       <p>{pin.Lat}</p>
       <p>{pin.Lon}</p>
-      <p>{pin.ImgFile}</p>
 	  <img src="{pin.ImgFile}" alt="avatar" width="200px" height="200px"/>
       <p>{pin.Caption}</p>
 	  <p>{pin.dateadded}</p>
@@ -65,12 +63,62 @@
 
 <style>
 :global(body) {
-	padding: 0;
+	padding: 2.5%;
 }
 .main {
 	display: flex;
 	flex-direction: row;
 }
+.sv {
+	position: responsive;
+	text-align: center;
+}
+h1 {
+    text-align: center;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    display: inline-block;
+    transform: scale(2, 1.5);
+}
+
+	body {
+		color: white;
+		background-image: url("layered-waves.svg");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-color: #202731;
+		padding-top: 0px;
+	}
+
+	section {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		min-height: 20px;
+		padding: 5px 10vw;
+
+	}
+
+
+	.button {
+		position: absolute;
+		top: 15px;
+		right: 32px;
+		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		background-color: none;
+		border: 2px solid black;
+		color: black;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		vertical-align: right;
+		font-size: 16px;
+		border-radius: 12px;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),  0 6px 20px 0 rgba(0,0,0,0.19);
+	}
 </style>
 <div class="main">
 	<Map markerList = { markerList }></Map>

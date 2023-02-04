@@ -35,6 +35,7 @@
 	})
 
 
+
     export let data: PageData
     console.log("Exported pinboard")
 </script>
@@ -67,6 +68,9 @@
 		display: inline-block;
 		transform: scale(1.75, 1.5);
 		font-family: 'IBM Plex Sans', sans-serif;
+
+		margin-bottom: 30px;
+		margin-top: 20px;
 	}
 	h1 {
 		text-align: center;

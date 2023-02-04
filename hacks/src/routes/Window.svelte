@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { curMarker } from './stores.js';
+	import { curMarker, createMarkerState } from './stores.js';
 
 	export let message = 'Default message';
 	export let markerList: any[] = [];
@@ -7,6 +7,9 @@
 	curMarker.subscribe(c => {
 		cur = c;
 	})
+	
+	let state = false;
+	createMarkerState.subscribe(b => state = b)
 
 	let avatar: any, fileinput: any, reader;
 	
@@ -26,21 +29,28 @@
 	const handleUpload = () => {
 
 	}
+
+	const toggleState = () => {
+		createMarkerState.update(b => b = !state)
+	}
 	
 </script>
 <div id="app">
-	<grid>
-		<h2>{message}</h2>
-		<br>
-		<h1>Upload Image</h1>
-		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
-		{#if avatar} 
-			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
-			<div class = "submit-button" on:click = {() => handleUpload()}>Submit</div>
-		{/if}
-		<br>
-		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-	</grid>
+	<div class = "submit-button" on:click = {() => toggleState()}>Add marker</div>
+	{#if state}
+		<grid>
+			<h2>{message}</h2>
+			<br>
+			<h1>Upload Image</h1>
+			<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
+			{#if avatar} 
+				<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
+				<div class = "submit-button" on:click = {() => handleUpload()}>Submit</div>
+			{/if}
+			<br>
+			<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
+		</grid>
+	{/if}
 	<grid class="viewside">
 		<h2>{message}</h2>
 		<br>
@@ -80,6 +90,18 @@
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	.submit-button:hover {
+		cursor: pointer;
+	}
+
+	.toggle-button {
+		background-color: white;
+		text-align: center;
+		margin-top: 10px;
+		width: 20px;
+		padding: 5px 5px 5px 5px;
+		font-family: 'IBM Plex Sans', sans-serif;
+	}
+	.toggle-button:hover {
 		cursor: pointer;
 	}
 

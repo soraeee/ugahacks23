@@ -12,9 +12,11 @@
 	export let markerList: any[] = [];
     
     import { onMount, getContext } from 'svelte';
-	import { info, curMarker } from './stores.js';
+	import { info, curMarker, createMarkerState } from './stores.js';
 
 	let markerCount = 0;
+	let state = false;
+	createMarkerState.subscribe(b => state = b)
 
 	// Change content displayed in Window.svelte
 	const displayInfo = (content: any) => {
@@ -29,18 +31,21 @@
             center,
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
-			// Delete markers with no content added
-			// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
-			for (let i = 0; i < markerList.length; i++) {
-				//console.log("kill")
-				if (!markerList[i].hasContent) {
-					markerList[i].marker.setMap(null)
-					markerList = markerList.filter(item => item != markerList[i])
-					markerCount -= 1;
+			console.log(state)
+			if (state) {
+				// Delete markers with no content added
+				// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
+				for (let i = 0; i < markerList.length; i++) {
+					//console.log("kill")
+					if (!markerList[i].hasContent) {
+						markerList[i].marker.setMap(null)
+						markerList = markerList.filter(item => item != markerList[i])
+						markerCount -= 1;
+					}
 				}
+				displayInfo("Add an image to marker " + markerCount); // placeholder?
+				placeMarker(event.latLng);
 			}
-			displayInfo("Add an image to marker " + markerCount); // placeholder?
-			placeMarker(event.latLng);
 		});
 	});
 

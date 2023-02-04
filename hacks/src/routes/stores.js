@@ -5,3 +5,5 @@ export const curMarker = writable(0);
 export const lastImage = writable();
 
 export const markerList = writable([]);
+
+export const createMarkerState = writable(false);

@@ -39,8 +39,8 @@
 					markerCount -= 1;
 				}
 			}
-			placeMarker(event.latLng);
 			displayInfo("Add an image to marker " + markerCount); // placeholder?
+			placeMarker(event.latLng);
 		});
 	});
 

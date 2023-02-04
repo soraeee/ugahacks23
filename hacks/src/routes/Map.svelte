@@ -9,27 +9,30 @@
 	let zoom = 8;
     let center = {lat: 0, lng: 0};
 
-	var markerList: any[] = [];
+	export let markerList: any[] = [];
     
     import { onMount, getContext } from 'svelte';
-	import { info } from './stores.js';
+	import { info, curMarker } from './stores.js';
 
 	let markerCount = 0;
 
+	// Change content displayed in Window.svelte
 	const displayInfo = (content: any) => {
 		info.update(() => content)
-		console.log(content)
+		//console.log(content)
 	}
     
+	// Add the map
 	onMount(async () => {
 		map = new google.maps.Map(container, {
             zoom,
             center,
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
-			// Kill markers with no content added
+			// Delete markers with no content added
+			// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
 			for (let i = 0; i < markerList.length; i++) {
-				console.log("kill")
+				//console.log("kill")
 				if (!markerList[i].hasContent) {
 					markerList[i].marker.setMap(null)
 					markerList = markerList.filter(item => item != markerList[i])
@@ -41,22 +44,30 @@
 		});
 	});
 
+	// Place a marker
 	function placeMarker(location: any) {
 		var marker = new google.maps.Marker({
 			position: location, 
 			map: map,
 			zIndex: markerCount // this isn't garbage at all! this will cause no problems in the future! trust me!
 		});
+
+		// Add a listener to center the map on a clicked marker
 		marker.addListener('click', () => {
 			//displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
 			map.setZoom(8);
     		map.setCenter(marker.getPosition() as google.maps.LatLng);
 		})
+
+		// Changes the display info when a marker is clicked
 		google.maps.event.addListener(marker, 'click', (function(marker, i) {
 			return function() {
 				displayInfo("This is marker " + i);
+				curMarker.set(i);
 			}
 		})(marker, markerCount));
+
+		// the only sane way i can think of identifying markers
 		markerList.push({
 			marker: marker,
 			hasContent: false,

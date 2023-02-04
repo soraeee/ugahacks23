@@ -32,6 +32,7 @@
 	import { info } from "./stores.js"
 
 	let content: any;
+	let markerList: any[] = [];
 
 	info.subscribe(con => {
 		content = con;
@@ -54,6 +55,6 @@
 }
 </style>
 <div class="main">
-	<Map></Map>
-	<Window message = { content }></Window>
+	<Map markerList = { markerList }></Map>
+	<Window message = { content } markerList = { markerList }></Window>
 </div>

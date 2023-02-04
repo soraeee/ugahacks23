@@ -1,14 +1,24 @@
-<script>
-	export let message = 'Default message';
+<script lang="ts">
+	import { curMarker } from './stores.js';
 
-	let  avatar, fileinput,reader;
+	export let message = 'Default message';
+	export let markerList: any[] = [];
+	var cur = 0;
+	curMarker.subscribe(c => {
+		cur = c;
+	})
+
+	let avatar: any, fileinput: any, reader;
 	
-	const onFileSelected =(e)=>{
+	const onFileSelected =(e: any)=>{
   	let image = e.target.files[0];
 				reader = new FileReader();
 				reader.readAsDataURL(image);
 				reader.onload = e => {
+					// @ts-ignore
 					avatar = e.target.result
+					//markerList[cur].content.push(avatar)
+					markerList[cur].hasContent = true;
 				};
 				console.log(reader);
 }

@@ -10,7 +10,7 @@
 
 	let avatar: any, fileinput: any, reader;
 	
-	const onFileSelected =(e: any)=>{
+	const onFileSelected = (e: any)=>{
   	let image = e.target.files[0];
 				reader = new FileReader();
 				reader.readAsDataURL(image);
@@ -21,7 +21,11 @@
 					markerList[cur].hasContent = true;
 				};
 				console.log(reader);
-}
+	}
+
+	const handleUpload = () => {
+
+	}
 	
 </script>
 <div id="app">
@@ -29,24 +33,25 @@
 		<h2>{message}</h2>
 		<br>
 		<h1>Upload Image</h1>
+		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
 		{#if avatar} 
 			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
+			<div class = "submit-button" on:click = {() => handleUpload()}>Submit</div>
 		{/if}
-		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="80px"/>
 		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
-		<hr width="100%">
-
-		<grid class="dbimages">
-			<h2>Current Saved Images</h2><br>
-			<img src="{avatar}" alt="avatar" width="70px" height="70px"/>
-		</grid>
 	</grid>
 </div>
 <style>
 	h2 {
 		font-size: 2rem;
 		text-align: center;
+		color: #FFFFFF;
+	}
+	h1 {
+		font-size: 1rem;
+		text-align: center;
+		color: #FFFFFF;
 	}
 	grid {
 		align-items: center;
@@ -56,6 +61,19 @@
 		flex-wrap: wrap;
 		width: 450px;
 		background-color: #202731;
+	}
+	.upload {
+		width: 50px;
+		color: white;
+	}
+	.submit-button {
+		background-color: white;
+		text-align: center;
+		margin-top: 10px;
+		padding: 5px 15px 5px 15px;
+	}
+	.submit-button:hover {
+		cursor: pointer;
 	}
 </style>
   

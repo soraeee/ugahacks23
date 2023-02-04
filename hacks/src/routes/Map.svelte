@@ -55,7 +55,7 @@
 		// Add a listener to center the map on a clicked marker
 		marker.addListener('click', () => {
 			//displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
-			map.setZoom(8);
+			map.setZoom(6);
     		map.setCenter(marker.getPosition() as google.maps.LatLng);
 		})
 

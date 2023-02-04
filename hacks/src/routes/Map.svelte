@@ -3,7 +3,7 @@
 	 * @type {any}
 	 */
 	let container: any;
-	let map;
+	let map: any;
 	let zoom = 8;
     let center = {lat: 0, lng: 0};
     
@@ -14,7 +14,17 @@
             zoom,
             center,
 		});
+		google.maps.event.addListener(map, 'click', function(event) {
+			placeMarker(event.latLng);
+		});
 	});
+
+	function placeMarker(location: any) {
+		var marker = new google.maps.Marker({
+			position: location, 
+			map: map
+		});
+	}
 </script>
 <style>
     .full-screen {

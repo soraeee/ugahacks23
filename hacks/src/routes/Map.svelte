@@ -27,7 +27,17 @@
             center,
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
+			// Kill markers with no content added
+			for (let i = 0; i < markerList.length; i++) {
+				console.log("kill")
+				if (!markerList[i].hasContent) {
+					markerList[i].marker.setMap(null)
+					markerList = markerList.filter(item => item != markerList[i])
+					markerCount -= 1;
+				}
+			}
 			placeMarker(event.latLng);
+			displayInfo("Add an image to marker " + markerCount); // placeholder?
 		});
 	});
 
@@ -47,7 +57,12 @@
 				displayInfo("This is marker " + i);
 			}
 		})(marker, markerCount));
-		markerList.push(marker);
+		markerList.push({
+			marker: marker,
+			hasContent: false,
+			images: [],
+			id: markerCount
+		});
 		markerCount += 1;
 	}
 </script>

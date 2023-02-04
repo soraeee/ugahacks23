@@ -2,8 +2,17 @@
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 <p>dingus</p>
 
-<script>
+<script lang="ts">
 	import Map from './Map.svelte';
+	import Modal, { bind } from 'svelte-simple-modal';
+	import Window from './Window.svelte'
+	import { info } from "./stores.js"
+
+	let content: any;
+
+	info.subscribe(con => {
+		content = con;
+	})
 </script>
 
 <svelte:head>
@@ -16,6 +25,12 @@
 :global(body) {
 	padding: 0;
 }
+.main {
+	display: flex;
+	flex-direction: row;
+}
 </style>
-
-<Map></Map>
+<div class="main">
+	<Map></Map>
+	<Window message = { content }></Window>
+</div>

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Window from './Window.svelte';
+
 	/**
 	 * @type {any}
 	 */
@@ -9,7 +11,13 @@
 
 	var markerList: any[] = [];
     
-    import { onMount } from 'svelte';
+    import { onMount, getContext } from 'svelte';
+	import { info } from './stores.js';
+
+	const displayInfo = (content: any) => {
+		info.update(() => content)
+		console.log(content)
+	}
     
 	onMount(async () => {
 		map = new google.maps.Map(container, {
@@ -22,7 +30,6 @@
 				"lat": event.latLng.lat(),
 				"lng": event.latLng.lng(),
 			})
-			console.log(markerList)
 		});
 	});
 
@@ -31,11 +38,15 @@
 			position: location, 
 			map: map
 		});
+		marker.addListener('click', function(event) {
+			displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
+			//console.log(event.latLng.lat());
+		})
 	}
 </script>
 <style>
     .full-screen {
-        width: 100vw;
+        width: 70vw;
         height: 100vh;
     }
 </style>

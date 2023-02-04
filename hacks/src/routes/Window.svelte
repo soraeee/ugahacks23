@@ -10,7 +10,7 @@
 
 	let avatar: any, fileinput: any, reader;
 	
-	const onFileSelected =(e: any)=>{
+	const onFileSelected = (e: any)=>{
   	let image = e.target.files[0];
 				reader = new FileReader();
 				reader.readAsDataURL(image);
@@ -21,7 +21,11 @@
 					markerList[cur].hasContent = true;
 				};
 				console.log(reader);
-}
+	}
+
+	const handleUpload = () => {
+
+	}
 	
 </script>
 <div id="app">
@@ -32,7 +36,7 @@
 		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
 		{#if avatar} 
 			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
-			<div class = "submit-button">Submit</div>
+			<div class = "submit-button" on:click = {() => handleUpload()}>Submit</div>
 		{/if}
 		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >

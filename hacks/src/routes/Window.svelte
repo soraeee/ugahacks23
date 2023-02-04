@@ -47,11 +47,13 @@
 		font-size: 2rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	h1 {
 		font-size: 1rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	grid {
 		align-items: center;
@@ -71,6 +73,7 @@
 		text-align: center;
 		margin-top: 10px;
 		padding: 5px 15px 5px 15px;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	.submit-button:hover {
 		cursor: pointer;

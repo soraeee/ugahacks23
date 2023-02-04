@@ -78,7 +78,8 @@ h1 {
     font-family: 'Bebas Neue', cursive;
     font-size: 30px;
     display: inline-block;
-    transform: scale(2, 1.5);
+    transform: scale(1.75, 1.5);
+	font-family: 'IBM Plex Sans', sans-serif;
 }
 
 	body {
@@ -89,6 +90,7 @@ h1 {
 		background-size: cover;
 		background-color: #202731;
 		padding-top: 0px;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 
 	section {
@@ -106,7 +108,7 @@ h1 {
 		position: absolute;
 		top: 15px;
 		right: 32px;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: 'IBM Plex Sans', sans-serif;
 		background-color: none;
 		border: 2px solid black;
 		color: black;

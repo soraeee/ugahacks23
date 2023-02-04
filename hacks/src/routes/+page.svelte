@@ -17,12 +17,10 @@
 	<div class="layer1"></div>
     <h1>PictoMap</h1>
     
-	<a href="#" class="button">UPLOAD</a>
+	<!--<a href="#" class="button">UPLOAD</a>-->
 	</section>
 	<div id="map"></div>
   </body>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>dingus</p>
 
 <script lang="ts">
 	import Map from './Map.svelte';

@@ -17,12 +17,10 @@
 	<div class="layer1"></div>
     <h1>PictoMap</h1>
     
-	<a href="#" class="button">UPLOAD</a>
+	<!--<a href="#" class="button">UPLOAD</a>-->
 	</section>
 	<div id="map"></div>
   </body>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-<p>dingus</p>
 
 <script lang="ts">
 	import Map from './Map.svelte';
@@ -67,8 +65,9 @@
 		font-family: 'Bebas Neue', cursive;
 		font-size: 30px;
 		display: inline-block;
-		transform: scale(2, 1.5);
-	}
+		transform: scale(1.75, 1.5);
+		font-family: 'IBM Plex Sans', sans-serif;
+}
 	body {
 		color: white;
 		background-image: url('images/redwave.png');
@@ -77,6 +76,7 @@
 		background-size: cover;
 		background-color: #202731;
 		padding-top: 0px;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 
 	section {
@@ -93,7 +93,7 @@
 		position: absolute;
 		top: 15px;
 		right: 32px;
-		font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+		font-family: 'IBM Plex Sans', sans-serif;
 		background-color: none;
 		border: 2px solid black;
 		color: black;

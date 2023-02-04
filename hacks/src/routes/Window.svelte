@@ -68,11 +68,10 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		width: 450px;
-		background-color: #202731;
 	}
 	.upload {
 		width: 50px;
-		color: white;
+		filter: invert(100%);
 	}
 	.submit-button {
 		background-color: white;
@@ -83,6 +82,10 @@
 	}
 	.submit-button:hover {
 		cursor: pointer;
+	}
+
+	#app {
+		background-color: #0d1621;
 	}
 </style>
   

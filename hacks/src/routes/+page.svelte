@@ -44,7 +44,8 @@
 
 <style>
 	:global(body) {
-		padding: 2.5%;
+		padding: 0%;
+		margin: 0%;
 	}
 	.main {
 		display: flex;

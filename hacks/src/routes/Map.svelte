@@ -6,7 +6,7 @@
 	 */
 	let container: any;
 	let map: any;
-	let zoom = 2;
+	let zoom = 2.5;
     let center = {lat: 0, lng: 0};
 
 	export let markerList: any[] = [];
@@ -29,10 +29,10 @@
 		map = new google.maps.Map(container, {
             zoom,
             center,
+			minZoom: 2.5
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
 			console.log(state)
-			if (state) {
 				// Delete markers with no content added
 				// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
 				for (let i = 0; i < markerList.length; i++) {
@@ -43,6 +43,7 @@
 						markerCount -= 1;
 					}
 				}
+			if (state) {
 				displayInfo("Add an image to marker " + markerCount); // placeholder?
 				placeMarker(event.latLng);
 			}

@@ -55,6 +55,8 @@
 	.main {
 		display: flex;
 		flex-direction: row;
+		padding: 25px;
+		background-color: #202731;
 	}
 	.sv {
 		position: responsive;
@@ -63,13 +65,15 @@
 	.title {
 		text-align: center;
 		font-family: 'Bebas Neue', cursive;
-		font-size: 2em;
+		font-size: 3.25em;
 		font-weight: 600;
 		display: inline-block;
 		transform: scale(1.75, 1.5);
 		font-family: 'IBM Plex Sans', sans-serif;
+		color: white;
+		text-shadow: 3px 3px #13252f;
 
-		margin-bottom: 30px;
+		margin-bottom: 10px;
 		margin-top: 20px;
 	}
 	h1 {
@@ -125,8 +129,21 @@
 	.dingus {
 		all: unset;
 	}
+
+	.credits {
+		align-items: center;
+		font-family: 'IBM Plex Sans', sans-serif;
+		font-weight: 400;
+		background-color: #202731;
+		color: #FFFFFF;
+		padding-bottom: 20px;
+
+		display: flex;
+		justify-content: center;
+	}
 </style>
 <div class="main">
 	<Map markerList = { markerList }></Map>
 	<Window message = { content } markerList = { markerList }></Window>
 </div>
+<div class = "credits">Made by Amelia, Andrew, Jason, Toni</div>

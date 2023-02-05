@@ -36,7 +36,13 @@
 	
 </script>
 <div id="app">
-	<div class = "submit-button" on:click = {() => toggleState()}>Add marker</div>
+	<div class = "marker-container">
+		{#if !state}
+			<div class = "submit-button" on:click = {() => toggleState()}>Add marker</div>
+		{:else}
+			<div class = "submit-button" on:click = {() => toggleState()}>Cancel</div>
+		{/if}
+	</div>
 	{#if state}
 		<grid>
 			<h2>{message}</h2>
@@ -83,31 +89,32 @@
 		filter: invert(100%);
 	}
 	.submit-button {
-		background-color: white;
+		background-color: #53606e;
+		color: #FFFFFF;
+		border-radius: 3px;
 		text-align: center;
 		margin-top: 10px;
+		width: 20%;
 		padding: 5px 15px 5px 15px;
 		font-family: 'IBM Plex Sans', sans-serif;
+		filter: drop-shadow(0 0 0.6rem #000000);
 	}
 	.submit-button:hover {
 		cursor: pointer;
+		filter: drop-shadow(0 0 0.6rem #13252f);
+		background-color: #536b84;
 	}
 
-	.toggle-button {
-		background-color: white;
-		text-align: center;
-		margin-top: 10px;
-		width: 20px;
-		padding: 5px 5px 5px 5px;
-		font-family: 'IBM Plex Sans', sans-serif;
-	}
-	.toggle-button:hover {
-		cursor: pointer;
+	.marker-container {
+		margin: auto;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
 	}
 
 	#app {
 		background-color: #0d1621;
-		width:30%;
+		width: 30%;
 	}
 </style>
   

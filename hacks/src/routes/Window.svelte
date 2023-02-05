@@ -15,6 +15,7 @@
 	}
 
 	let avatar: any, fileinput: any, reader;
+	let imageLink: string;
 
 	const onFileSelected = (e: any) => {
 		let image = e.target.files[0];
@@ -29,7 +30,9 @@
 		console.log(reader);
 	};
 
-	
+	const submitLink = (link: string) => {
+		avatar = link;
+	}
 	
 </script>
 
@@ -44,12 +47,10 @@
 				<div class = "toggle-button" on:click = {() => toggleState()}>Cancel</div>
 			{/if}
 		</div>
-		<h1>Upload Image</h1>
-		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
-		{#if avatar} 
+		<h1>Upload image link</h1>
+		<input bind:value={imageLink}>
 			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
-			<div class = "submit-button" on:click = {() => handleUpload()}>Submit</div>
-		{/if}
+			<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
 		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</grid>

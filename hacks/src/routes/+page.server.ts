@@ -1,4 +1,4 @@
-import collection from "$lib/collection"
+import collection from "$lib/collection";
 import type { Pin } from "$lib/pin";
 export async function load() {
   const pinboard = await collection.find().toArray()
@@ -16,7 +16,7 @@ export async function load() {
       doc.dateadded = pinboard[i].dateadded;
       pinboard2.push(doc);
   }
-  console.log(pinboard2)
+  // console.log(pinboard2)
   console.log("Got pinboard")
   return {
     data: { pinboard2 }

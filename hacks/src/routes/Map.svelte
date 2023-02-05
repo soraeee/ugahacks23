@@ -12,7 +12,7 @@
 	export let markerList: any[] = [];
     
     import { onMount, getContext } from 'svelte';
-	import { info, curMarker } from './stores.js';
+	import { info, curMarker, curLat, curLon } from './stores.js';
 
 	let markerCount = 0;
 
@@ -64,6 +64,8 @@
 			return function() {
 				displayInfo("This is marker " + i);
 				curMarker.set(i);
+				curLat.set(markerList[i].position.lat);
+				curLon.set(markerList[i].position.lng);
 			}
 		})(marker, markerCount));
 

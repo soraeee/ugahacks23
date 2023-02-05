@@ -56,12 +56,16 @@
 					<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
 				<br>
 			{/if}
-			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
+			<img class="imgrep" src="{avatar}" alt="avatar" width="400px"/>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</grid>
 </div>
 
 <style>
+	.imgrep {
+		padding: 25px;
+		width: 90%;
+	}
 	h2 {
 		font-size: 2rem;
 		text-align: center;

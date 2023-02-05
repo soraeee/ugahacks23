@@ -6,15 +6,17 @@
 	 */
 	let container: any;
 	let map: any;
-	let zoom = 2;
+	let zoom = 2.5;
     let center = {lat: 0, lng: 0};
 
 	export let markerList: any[] = [];
     
     import { onMount, getContext } from 'svelte';
-	import { info, curMarker, curLat, curLon } from './stores.js';
+	import { info, curMarker, curLat, curLon, createMarkerState } from './stores.js';
 
 	let markerCount = 0;
+	let state = false;
+	createMarkerState.subscribe(b => state = b)
 
 	// Change content displayed in Window.svelte
 	const displayInfo = (content: any) => {
@@ -27,20 +29,24 @@
 		map = new google.maps.Map(container, {
             zoom,
             center,
+			minZoom: 2.5
 		});
 		google.maps.event.addListener(map, 'click', function(event) {
-			// Delete markers with no content added
-			// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
-			for (let i = 0; i < markerList.length; i++) {
-				//console.log("kill")
-				if (!markerList[i].hasContent) {
-					markerList[i].marker.setMap(null)
-					markerList = markerList.filter(item => item != markerList[i])
-					markerCount -= 1;
+			console.log(state)
+				// Delete markers with no content added
+				// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
+				for (let i = 0; i < markerList.length; i++) {
+					//console.log("kill")
+					if (!markerList[i].hasContent) {
+						markerList[i].marker.setMap(null)
+						markerList = markerList.filter(item => item != markerList[i])
+						markerCount -= 1;
+					}
 				}
+			if (state) {
+				displayInfo("Add an image to marker " + markerCount); // placeholder?
+				placeMarker(event.latLng);
 			}
-			displayInfo("Add an image to marker " + markerCount); // placeholder?
-			placeMarker(event.latLng);
 		});
 	});
 
@@ -81,9 +87,8 @@
 </script>
 <style>
     .full-screen {
-        width: 70vw;
+        width: 70%;
         height: 100vh;
-
     }
 </style>
 

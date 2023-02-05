@@ -5,13 +5,13 @@ const pinboard = await collection.find().toArray()
 // pinboard[0]._id = pinboard[0]._id.valueOf()
 const pinboard2: Array<Pin> = [];
 for (let i = 0; i < pinboard.length; i++) {
-    let doc: Pin = { id: "", Name: "", Caption: "", ImgFile: "", Lat: "", Lon: "", dateadded: "" };
+    let doc: Pin = { id: "", Name: "", Caption: "", ImgFile: "", lat: "", lon: "", dateadded: "" };
     doc.id = pinboard[i]._id.toString();
     doc.Name = pinboard[i].Name;
     doc.Caption = pinboard[i].Caption;
     doc.ImgFile = pinboard[i].ImgFile;
-    doc.Lat = pinboard[i].Lat;
-    doc.Lon = pinboard[i].Lon;
+    doc.lat = pinboard[i].lat;
+    doc.lon = pinboard[i].lon;
     doc.dateadded = pinboard[i].dateadded;
     pinboard2.push(doc);
 }

@@ -30,7 +30,7 @@
 	
 	// export let data: PageData
 
-	export let pinboard;
+	export let pinboard: Pin[];
 	
 	console.log("Exported pinboard")
 	// for (let i = 0; i < pinboard.length; i++) {
@@ -54,10 +54,9 @@
 	// 	});
 	// 	markerCount += 1;
 	// });
-	// pinboard.forEach((element: Pin) => {
-	// 	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
-	// });
+	
 	let element = pinboard[0];
+	console.log(pinboard);
 
 	console.log('hi0');
 	// Add the map
@@ -66,7 +65,7 @@
 		//@ts-ignore may god forgive me
 		window.onMapLoad = async () => {
 			console.log('google should now EXIST');
-			placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
+			// placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
 
 			createMarkerState.subscribe(b => state = b)
 
@@ -92,6 +91,12 @@
 					placeMarker(event.latLng);
 				}
 			});
+			
+			pinboard.forEach((element: Pin) => {
+				console.log("placing marker")
+				console.log(element.lat)
+				placeMarkerWithImage({lat: parseFloat(element.lat), lng: parseFloat(element.lon)}, element.ImgFile);
+			});	
 		}
 	});
 
@@ -108,7 +113,7 @@
 		// Add a listener to center the map on a clicked marker
 		marker.addListener('click', () => {
 			//displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
-			map.setZoom(6);
+			// map.setZoom(6);
     		map.setCenter(marker.getPosition() as google.maps.LatLng);
 		})
 
@@ -133,6 +138,9 @@
 	}
 
 	function placeMarkerWithImage(location: any, image: any) {
+		console.log("placing marker with image")
+		console.log(location)
+		console.log(image)
 		var marker = new google.maps.Marker({
 			position: location, 
 			map: map,
@@ -142,7 +150,7 @@
 		// Add a listener to center the map on a clicked marker
 		marker.addListener('click', () => {
 			//displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
-			map.setZoom(6);
+			// map.setZoom(6);
     		map.setCenter(marker.getPosition() as google.maps.LatLng);
 		})
 

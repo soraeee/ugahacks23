@@ -3,7 +3,7 @@ export type Pin = {
     Name: string;
     Caption: string;
     ImgFile: string;
-    Lat: string;
-    Lon: string;
+    lat: string;
+    lon: string;
     dateadded: string;
 }

@@ -101,7 +101,7 @@
 			<br />
 		{/if}
 		{#if avatar}
-			<img src={avatar} alt="avatar" width="200px" height="200px" />
+			<img class="imgrep" src="{avatar}" alt="avatar" width="400px"/>
 		{/if}
 		<input
 			style="display:none"
@@ -114,6 +114,10 @@
 </div>
 
 <style>
+	.imgrep {
+		padding: 25px;
+		width: 90%;
+	}
 	h2 {
 		font-size: 2rem;
 		text-align: center;

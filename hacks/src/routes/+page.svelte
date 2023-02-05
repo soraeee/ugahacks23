@@ -44,6 +44,7 @@
 
 <style>
 	:global(body) {
+		margin: 0%;
 		padding: none;
 	}
 	.main {

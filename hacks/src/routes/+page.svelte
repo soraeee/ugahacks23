@@ -146,4 +146,4 @@
 	<Map markerList = { markerList }></Map>
 	<Window message = { content } markerList = { markerList }></Window>
 </div>
-<div class = "credits">Made by Amelia, Andrew, Jason, Toni</div>
+<div class = "credits">Made by Amelia, Andrew, Jason, Toni for UGAHacks 8</div>

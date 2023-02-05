@@ -8,6 +8,12 @@
 		cur = c;
 	})
 
+	let state = false;
+	createMarkerState.subscribe(b => state = b)
+	const toggleState = () => {
+		createMarkerState.update(b => b = !state)
+	}
+
 	let avatar: any, fileinput: any, reader;
 
 	const onFileSelected = (e: any) => {
@@ -31,6 +37,13 @@
 	<grid>
 		<h2>{message}</h2>
 		<br>
+		<div class = "marker-container">
+			{#if !state}
+				<div class = "toggle-button" on:click = {() => toggleState()}>Add marker</div>
+			{:else}
+				<div class = "toggle-button" on:click = {() => toggleState()}>Cancel</div>
+			{/if}
+		</div>
 		<h1>Upload Image</h1>
 		<img class="upload" src="https://static.thenounproject.com/png/625182-200.png" alt="" on:click={()=>{fileinput.click();}} width="30px"/>
 		{#if avatar} 
@@ -47,11 +60,13 @@
 		font-size: 2rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	h1 {
 		font-size: 1rem;
 		text-align: center;
 		color: #FFFFFF;
+		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	grid {
 		align-items: center;
@@ -76,6 +91,22 @@
 		filter: drop-shadow(0 0 0.6rem #000000);
 	}
 	.submit-button:hover {
+		cursor: pointer;
+		filter: drop-shadow(0 0 0.6rem #13252f);
+		background-color: #536b84;
+	}
+	.toggle-button {
+		background-color: #53606e;
+		color: #FFFFFF;
+		border-radius: 3px;
+		text-align: center;
+		margin-top: 10px;
+		width: 100%;
+		padding: 5px 15px 5px 15px;
+		font-family: 'IBM Plex Sans', sans-serif;
+		filter: drop-shadow(0 0 0.6rem #000000);
+	}
+	.toggle-button:hover {
 		cursor: pointer;
 		filter: drop-shadow(0 0 0.6rem #13252f);
 		background-color: #536b84;

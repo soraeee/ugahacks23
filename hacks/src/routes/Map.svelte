@@ -61,36 +61,38 @@
 
 	console.log('hi0');
 	// Add the map
-	onMount(async () => {
-		console.log('hi1');
-		document.addEventListener('DOMContentLoaded', () => {
-			console.log('hi2');
-	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
-		})
-		createMarkerState.subscribe(b => state = b)
+	onMount(() => {
+		// global to let gmaps see it
+		//@ts-ignore may god forgive me
+		window.onMapLoad = async () => {
+			console.log('google should now EXIST');
+			placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
 
-		map = new google.maps.Map(container, {
-            zoom,
-            center,
-			minZoom: 2.5
-		});
-		google.maps.event.addListener(map, 'click', function(event) {
-			console.log(state)
-				// Delete markers with no content added
-				// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
-				for (let i = 0; i < markerList.length; i++) {
-					//console.log("kill")
-					if (!markerList[i].hasContent) {
-						markerList[i].marker.setMap(null)
-						markerList = markerList.filter(item => item != markerList[i])
-						markerCount -= 1;
+			createMarkerState.subscribe(b => state = b)
+
+			map = new google.maps.Map(container, {
+							zoom,
+							center,
+				minZoom: 2.5
+			});
+			google.maps.event.addListener(map, 'click', function(event) {
+				console.log(state)
+					// Delete markers with no content added
+					// kind of sucks because clicking on a marker with no content is really buggy and jank but whatever
+					for (let i = 0; i < markerList.length; i++) {
+						//console.log("kill")
+						if (!markerList[i].hasContent) {
+							markerList[i].marker.setMap(null)
+							markerList = markerList.filter(item => item != markerList[i])
+							markerCount -= 1;
+						}
 					}
+				if (state) {
+					displayInfo("Add an image to marker " + markerCount); // placeholder?
+					placeMarker(event.latLng);
 				}
-			if (state) {
-				displayInfo("Add an image to marker " + markerCount); // placeholder?
-				placeMarker(event.latLng);
-			}
-		});
+			});
+		}
 	});
 
 

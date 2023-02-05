@@ -36,8 +36,10 @@
 
 
 
-    export let data: PageData
-    console.log("Exported pinboard")
+    // export let data: PageData
+	// // let pinboard = data.data.pinboard2;
+	// export let pinboard = data.data.pinboard2;
+    // console.log("Exported pinboard")
 </script>
 
 

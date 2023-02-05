@@ -16,7 +16,7 @@
 //       doc.dateadded = pinboard[i].dateadded;
 //       pinboard2.push(doc);
 //   }
-//   // console.log(pinboard2)
+//   console.log(pinboard2)
 //   console.log("Got pinboard")
 //   return {
 //     data: { pinboard2 }

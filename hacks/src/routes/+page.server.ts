@@ -22,3 +22,16 @@
 //     data: { pinboard2 }
 //   }
 // }
+
+import data from './pinManager';
+
+// google maps is required to be fetched; disable all form of ssr
+export const prerender = false;
+export const ssr = false;
+
+export function load({ params }) {
+	console.log(data);
+  return {
+    pinboard: data.data.pinboard2
+  };
+}

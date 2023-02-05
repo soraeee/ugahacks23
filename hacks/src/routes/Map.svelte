@@ -5,19 +5,20 @@
 	 * @type {any}
 	 */
 	let container: any;
-	let map: any;
+	let map: google.maps.Map<any>;
 	let zoom = 2.5;
     let center = {lat: 0, lng: 0};
 
 	export let markerList: any[] = [];
 
     
+	// import type { PageData } from './$types';
+	import type { Pin } from '$lib/pin';
     import { onMount, getContext } from 'svelte';
 	import { info, curMarker, curLat, curLon, createMarkerState } from './stores.js';
 
 	let markerCount = 0;
 	let state = false;
-	createMarkerState.subscribe(b => state = b)
 
 	// Change content displayed in Window.svelte
 	const displayInfo = (content: any) => {
@@ -25,8 +26,49 @@
 		//console.log(content)
 	}
     
+	//placing marker code
+	
+	// export let data: PageData
+
+	export let pinboard;
+	
+	console.log("Exported pinboard")
+	// for (let i = 0; i < pinboard.length; i++) {
+	// 	let element: Pin = pinboard[i];
+	// 	var marker = makeMarker(element.Lat, element.Lon);
+	// 	markerList.push({
+	// 		marker: marker,
+	// 		hasContent: true,
+	// 		images: [element.ImgFile],
+	// 		id: markerCount
+	// 	});
+	// 	markerCount += 1;
+	// }
+	// pinboard.forEach((element: Pin) => {
+	// 	var marker = makeMarker(element.Lat, element.Lon);
+	// 	markerList.push({
+	// 		marker: marker,
+	// 		hasContent: true,
+	// 		images: [element.ImgFile],
+	// 		id: markerCount
+	// 	});
+	// 	markerCount += 1;
+	// });
+	// pinboard.forEach((element: Pin) => {
+	// 	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
+	// });
+	let element = pinboard[0];
+
+	console.log('hi0');
 	// Add the map
 	onMount(async () => {
+		console.log('hi1');
+		document.addEventListener('DOMContentLoaded', () => {
+			console.log('hi2');
+	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
+		})
+		createMarkerState.subscribe(b => state = b)
+
 		map = new google.maps.Map(container, {
             zoom,
             center,
@@ -130,42 +172,6 @@
 			zIndex: markerCount // this isn't garbage at all! this will cause no problems in the future! trust me!
 		});
 	};
-
-	//placing marker code
-	
-	// import type { PageData } from './$types';
-	import type { Pin } from '$lib/pin';
-	// export let data: PageData
-	import data from './pinManager';
-	console.log(data)
-	let pinboard = data.data.pinboard2;
-    console.log("Exported pinboard")
-	// for (let i = 0; i < pinboard.length; i++) {
-	// 	let element: Pin = pinboard[i];
-	// 	var marker = makeMarker(element.Lat, element.Lon);
-	// 	markerList.push({
-	// 		marker: marker,
-	// 		hasContent: true,
-	// 		images: [element.ImgFile],
-	// 		id: markerCount
-	// 	});
-	// 	markerCount += 1;
-	// }
-	// pinboard.forEach((element: Pin) => {
-	// 	var marker = makeMarker(element.Lat, element.Lon);
-	// 	markerList.push({
-	// 		marker: marker,
-	// 		hasContent: true,
-	// 		images: [element.ImgFile],
-	// 		id: markerCount
-	// 	});
-	// 	markerCount += 1;
-	// });
-	// pinboard.forEach((element: Pin) => {
-	// 	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
-	// });
-	let element = pinboard[0];
-	placeMarkerWithImage({lat: parseFloat(element.Lat), lng: parseFloat(element.Lon)}, element.ImgFile);
 </script>
 <style>
     .full-screen {

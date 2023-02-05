@@ -22,3 +22,5 @@
 //     data: { pinboard2 }
 //   }
 // }
+
+// as far as i'm aware, .server files don't work for svelte elements - is the existance of this needed?

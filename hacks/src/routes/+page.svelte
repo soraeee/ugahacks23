@@ -1,26 +1,3 @@
-<head>
-    <title>PictoMap</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <script type="module" src="./index.js"></script>
-	<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-  </head>
-  <body data-sveltekit-preload-data="hover" class = "dingus">
-	<div style="display: contents"></div>
-
-	<section>
-	<div class="layer1"></div>
-    <div class = "title">PictoMap</div>
-    
-	<!--<a href="#" class="button">UPLOAD</a>-->
-	</section>
-	<div id="map"></div>
-  </body>
-
 <script lang="ts">
 	import Map from './Map.svelte';
 	import Window from './Window.svelte'
@@ -36,19 +13,34 @@
 
 
 
-    // export let data: PageData
+  export let data: PageData
 	// // let pinboard = data.data.pinboard2;
 	// export let pinboard = data.data.pinboard2;
     // console.log("Exported pinboard")
 </script>
 
-
-
 <svelte:head>
+	<title>PictoMap</title>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+	<script type="module" src="./index.js"></script>
+	<meta charset="utf-8" />
+	<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+	<meta name="viewport" content="width=device-width" />
 	<script defer async
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMzyBz7JU4pJgad35mYahE67zqJOqtlA&callback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbMzyBz7JU4pJgad35mYahE67zqJOqtlA">
 	</script>
 </svelte:head>
+
+<section>
+	<div class="layer1"></div>
+	<div class = "title">PictoMap</div>
+	
+<!--<a href="#" class="button">UPLOAD</a>-->
+</section>
+<div id="map"></div>
 
 <style>
 	:global(body) {
@@ -145,7 +137,7 @@
 	}
 </style>
 <div class="main">
-	<Map markerList = { markerList }></Map>
+	<Map markerList = { markerList } pinboard = { data.pinboard }></Map>
 	<Window message = { content } markerList = { markerList }></Window>
 </div>
 <div class = "credits">Made by Amelia, Andrew, Jason, Toni for UGAHacks 8</div>

@@ -3,9 +3,13 @@
 
 	export let message = 'Default message';
 	export let markerList: any[] = [];
+	let avatar: any, fileinput: any, reader;
 	var cur = 0;
 	curMarker.subscribe((c) => {
 		cur = c;
+	})
+	curImage.subscribe((c) => {
+		avatar = c;
 	})
 
 	let state = false;
@@ -14,7 +18,6 @@
 		createMarkerState.update(b => b = !state)
 	}
 
-	let avatar: any, fileinput: any, reader;
 	let imageLink: string;
 
 	const onFileSelected = (e: any) => {
@@ -50,10 +53,10 @@
 				</div>
 				<h1>Upload image link</h1>
 				<input bind:value={imageLink}>
-					<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
 					<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
 				<br>
 			{/if}
+			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</grid>
 </div>

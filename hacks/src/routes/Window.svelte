@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { curMarker, curLat, curLon, createMarkerState } from './stores.js';
+	import { curMarker, curLat, curLon, createMarkerState, curImage } from './stores.js';
 
 	export let message = 'Default message';
 	export let markerList: any[] = [];

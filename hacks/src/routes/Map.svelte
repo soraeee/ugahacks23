@@ -15,7 +15,7 @@
 	// import type { PageData } from './$types';
 	import type { Pin } from '$lib/pin';
     import { onMount, getContext } from 'svelte';
-	import { info, curMarker, curLat, curLon, createMarkerState } from './stores.js';
+	import { info, curMarker, curLat, curLon, createMarkerState, curImage } from './stores.js';
 
 	let markerCount = 0;
 	let state = false;
@@ -24,6 +24,10 @@
 	const displayInfo = (content: any) => {
 		info.update(() => content)
 		//console.log(content)
+	}
+
+	const updateImage = (img: string) => {
+		curImage.update(() => img)
 	}
     
 	//placing marker code

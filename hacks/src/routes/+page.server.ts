@@ -32,6 +32,6 @@ export const ssr = false;
 export function load({ params }) {
 	console.log(data);
   return {
-    pinboard: data.data.pinboard2
+    pinboard: data.data.pinboard2,
   };
 }

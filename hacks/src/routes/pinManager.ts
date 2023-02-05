@@ -17,6 +17,9 @@ for (let i = 0; i < pinboard.length; i++) {
 }
 // console.log(pinboard2)
 console.log("Got pinboard")
+
+
+
 export default {
     data: { pinboard2 }
 }

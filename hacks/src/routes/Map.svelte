@@ -9,7 +9,7 @@
 	let zoom = 2.5;
     let center = {lat: 0, lng: 0};
 
-	export let markerList: any[] = [];
+	export let markerList: any[];
 
     
 	// import type { PageData } from './$types';
@@ -28,6 +28,9 @@
 
 	const updateImage = (img: string) => {
 		curImage.update(() => img)
+	}
+	const updateMarkerCount = () => {
+		curMarker.update(() => markerCount)
 	}
     
 	//placing marker code
@@ -88,6 +91,8 @@
 							markerList[i].marker.setMap(null)
 							markerList = markerList.filter(item => item != markerList[i])
 							markerCount -= 1;
+							curMarker.update(() => markerCount)
+							i--;
 						}
 					}
 				if (state) {
@@ -112,7 +117,6 @@
 			position: location, 
 			map: map,
 			zIndex: markerCount, // this isn't garbage at all! this will cause no problems in the future! trust me!
-			icon: "https://media.discordapp.net/attachments/1063597595487903744/1071659169180045412/pin.png?width=701&height=701"
 		});
 
 		// Add a listener to center the map on a clicked marker
@@ -141,6 +145,7 @@
 			id: markerCount
 		});
 		markerCount += 1;
+		curMarker.update(() => markerCount)
 	}
 
 	function placeMarkerWithImage(location: any, image: any) {
@@ -151,7 +156,6 @@
 			position: location, 
 			map: map,
 			zIndex: markerCount, // this isn't garbage at all! this will cause no problems in the future! trust me!
-			icon: "https://media.discordapp.net/attachments/1063597595487903744/1071661200540176394/pin_small.png"
 		});
 
 		// Add a listener to center the map on a clicked marker
@@ -181,6 +185,7 @@
 			id: markerCount
 		});
 		markerCount += 1;
+		curMarker.update(() => markerCount)
 	}
 
 

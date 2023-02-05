@@ -167,7 +167,7 @@
 		// the only sane way i can think of identifying markers
 		markerList.push({
 			marker: marker,
-			hasContent: false,
+			hasContent: true,
 			images: [image],
 			id: markerCount
 		});

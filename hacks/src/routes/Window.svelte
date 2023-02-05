@@ -2,21 +2,21 @@
 	import { curMarker, curLat, curLon, createMarkerState, curImage } from './stores.js';
 
 	export let message = 'Default message';
-	export let markerList: any[] = [];
+	export let markerList: any[];
 	let avatar: any, fileinput: any, reader;
 	var cur = 0;
 	curMarker.subscribe((c) => {
 		cur = c;
-	})
+	});
 	curImage.subscribe((c) => {
 		avatar = c;
-	})
+	});
 
 	let state = false;
-	createMarkerState.subscribe(b => state = b)
+	createMarkerState.subscribe((b) => (state = b));
 	const toggleState = () => {
-		createMarkerState.update(b => b = !state)
-	}
+		createMarkerState.update((b) => (b = !state));
+	};
 
 	let imageLink: string;
 
@@ -33,31 +33,83 @@
 		console.log(reader);
 	};
 
+	async function doPost(link: string) {
+		// var data = JSON.stringify({
+		// 	collection: 'pinboard',
+		// 	database: 'pinboard',
+		// 	dataSource: 'Cluster0',
+		// 	projection: {
+		// 		_id: 1
+		// 	}
+		// });
+
+		// const response = await fetch(
+		// 	'https://data.mongodb-api.com/app/data-cnpwq/endpoint/webhook',
+		// 	{
+		// 		method: 'POST',
+		// 		mode: 'no-cors',
+		// 		body: JSON.stringify({
+		// 			collection: 'pinboard',
+		// 			database: 'pinboard',
+		// 			dataSource: 'Cluster0',
+		// 			document: {
+		// 				Name: 'Johnathan Doeseph',
+		// 				Caption: 'Image',
+		// 				ImgFile: link,
+		// 				lad: curLat,
+		// 				lon: curLon,
+		// 				dateadded: new Date().toString()
+		// 			}
+		// 		}),
+		// 		headers: {
+		// 			'Content-Type': 'application/json',
+		// 			'Access-Control-Request-Headers': '*',
+		// 			'api-key': 'vBLQm5JcAzEiu9TAzFjFT7ASZDcbeicB77QnM8Bq1ZdcGoKK6SnnlMwXWAK57vCs'
+		// 		}
+		// 	}
+		// );
+		
+		// const json = await response.json()
+		// console.log(JSON.stringify(json))
+	}
+
 	const submitLink = (link: string) => {
 		avatar = link;
-	}
-	
+		markerList[cur - 1].hasContent = true;
+		markerList[cur - 1].images = [link];
+		toggleState();
+				// post(link);
+		// doPost(link);
+	};
 </script>
 
 <div id="app">
 	<grid>
 		<h2>{message}</h2>
-		<br>
-			{#if !state}
-				<div class = "marker-container">
-					<div class = "toggle-button" on:click = {() => toggleState()}>Add marker</div>
-				</div>
-			{:else}
-				<div class = "marker-container">
-					<div class = "toggle-button" on:click = {() => toggleState()}>Cancel</div>
-				</div>
-				<h1>Upload image link</h1>
-				<input bind:value={imageLink}>
-					<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
-				<br>
-			{/if}
+		<br />
+		{#if !state}
+			<div class="marker-container">
+				<div class="toggle-button" on:click={() => toggleState()}>Add marker</div>
+			</div>
+		{:else}
+			<div class="marker-container">
+				<div class="toggle-button" on:click={() => toggleState()}>Cancel</div>
+			</div>
+			<h1>Upload image link</h1>
+			<input bind:value={imageLink} />
+			<div class="submit-button" on:click={() => submitLink(imageLink)}>Submit</div>
+			<br />
+		{/if}
+		{#if avatar}
 			<img class="imgrep" src="{avatar}" alt="avatar" width="400px"/>
-		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
+		{/if}
+		<input
+			style="display:none"
+			type="file"
+			accept=".jpg, .jpeg, .png"
+			on:change={(e) => onFileSelected(e)}
+			bind:this={fileinput}
+		/>
 	</grid>
 </div>
 
@@ -69,13 +121,13 @@
 	h2 {
 		font-size: 2rem;
 		text-align: center;
-		color: #FFFFFF;
+		color: #ffffff;
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	h1 {
 		font-size: 1rem;
 		text-align: center;
-		color: #FFFFFF;
+		color: #ffffff;
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
 	grid {
@@ -91,7 +143,7 @@
 	}
 	.submit-button {
 		background-color: #53606e;
-		color: #FFFFFF;
+		color: #ffffff;
 		border-radius: 3px;
 		text-align: center;
 		margin-top: 10px;
@@ -107,7 +159,7 @@
 	}
 	.toggle-button {
 		background-color: #53606e;
-		color: #FFFFFF;
+		color: #ffffff;
 		border-radius: 3px;
 		text-align: center;
 		margin-top: 10px;
@@ -134,4 +186,3 @@
 		width: 30%;
 	}
 </style>
-  

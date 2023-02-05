@@ -40,18 +40,20 @@
 	<grid>
 		<h2>{message}</h2>
 		<br>
-		<div class = "marker-container">
 			{#if !state}
-				<div class = "toggle-button" on:click = {() => toggleState()}>Add marker</div>
+				<div class = "marker-container">
+					<div class = "toggle-button" on:click = {() => toggleState()}>Add marker</div>
+				</div>
 			{:else}
-				<div class = "toggle-button" on:click = {() => toggleState()}>Cancel</div>
+				<div class = "marker-container">
+					<div class = "toggle-button" on:click = {() => toggleState()}>Cancel</div>
+				</div>
+				<h1>Upload image link</h1>
+				<input bind:value={imageLink}>
+					<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
+					<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
+				<br>
 			{/if}
-		</div>
-		<h1>Upload image link</h1>
-		<input bind:value={imageLink}>
-			<img src="{avatar}" alt="avatar" width="200px" height="200px"/>
-			<div class = "submit-button" on:click = {() => submitLink(imageLink)}>Submit</div>
-		<br>
 		<input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
 	</grid>
 </div>

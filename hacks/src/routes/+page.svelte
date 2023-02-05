@@ -37,7 +37,7 @@
 <section>
 	<div class="layer1"></div>
 	<div class = "title">PictoMap</div>
-	<img id="gif" src="./images/flyingplane.gif" >
+	<img src="./images/flyingplane.gif" >
 	
 <!--<a href="#" class="button">UPLOAD</a>-->
 </section>
@@ -65,11 +65,11 @@
 	}
 	.title {
 		text-align: center;
-		font-family: 'Bebas Neue', cursive;
+		font-family: 'IBM Plex Sans', sans-serif;
 		font-size: 3.25em;
 		font-weight: 600;
 		display: inline-block;
-		transform: scale(2, 1.5);
+		transform: scale(1.75, 1.5);
 		color: white;
 		text-shadow: 3px 3px #13252f;
 
@@ -78,10 +78,10 @@
 	}
 	h1 {
 		text-align: center;
-		font-family: 'Bebas Neue', cursive;
+		font-family: 'IBM Plex Sans', sans-serif;
 		font-size: 30px;
 		display: inline-block;
-		transform: scale(2, 1.5);
+		transform: scale(1.75, 1.5);
 		font-family: 'IBM Plex Sans', sans-serif;
 	}
 

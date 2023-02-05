@@ -130,7 +130,7 @@
 	}
 
 	#app {
-		background-color: #0d1621;
+		background-color: #202731;
 		width: 30%;
 	}
 </style>

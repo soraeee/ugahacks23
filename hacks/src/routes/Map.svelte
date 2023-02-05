@@ -126,6 +126,7 @@
 			return function() {
 				displayInfo("This is marker " + i);
 				curMarker.set(i);
+				updateImage(markerList[i].images[0]);
 				curLat.set(markerList[i].position.lat);
 				curLon.set(markerList[i].position.lng);
 			}
@@ -156,6 +157,7 @@
 			//displayInfo(event.latLng.lat() + ", " + event.latLng.lng());
 			// map.setZoom(6);
     		map.setCenter(marker.getPosition() as google.maps.LatLng);
+			// updateImage(image);
 		})
 
 		// Changes the display info when a marker is clicked
@@ -163,6 +165,7 @@
 			return function() {
 				displayInfo("This is marker " + i);
 				curMarker.set(i);
+				updateImage(markerList[i].images[0]);
 				curLat.set(markerList[i].position.lat);
 				curLon.set(markerList[i].position.lng);
 			}

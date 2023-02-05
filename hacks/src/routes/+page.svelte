@@ -37,7 +37,6 @@
 <section>
 	<div class="layer1"></div>
 	<div class = "title">PictoMap</div>
-	<img src="./images/flyingplane.gif" >
 	
 <!--<a href="#" class="button">UPLOAD</a>-->
 </section>

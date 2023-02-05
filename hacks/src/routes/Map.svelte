@@ -111,7 +111,8 @@
 		var marker = new google.maps.Marker({
 			position: location, 
 			map: map,
-			zIndex: markerCount // this isn't garbage at all! this will cause no problems in the future! trust me!
+			zIndex: markerCount, // this isn't garbage at all! this will cause no problems in the future! trust me!
+			icon: "https://media.discordapp.net/attachments/1063597595487903744/1071659169180045412/pin.png?width=701&height=701"
 		});
 
 		// Add a listener to center the map on a clicked marker
@@ -149,7 +150,8 @@
 		var marker = new google.maps.Marker({
 			position: location, 
 			map: map,
-			zIndex: markerCount // this isn't garbage at all! this will cause no problems in the future! trust me!
+			zIndex: markerCount, // this isn't garbage at all! this will cause no problems in the future! trust me!
+			icon: "https://media.discordapp.net/attachments/1063597595487903744/1071661200540176394/pin_small.png"
 		});
 
 		// Add a listener to center the map on a clicked marker

@@ -26,6 +26,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"gh-pages": "^5.0.0",
 		"google-maps": "^4.3.3",
 		"mongodb": "^5.0.0",
 		"svelte-google-maps": "^0.2.0",
